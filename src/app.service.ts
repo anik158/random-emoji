@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getEmoji( index?: number): string {
+  getEmoji(index?: number): string {
 
     const emojis = this.getEmojis();
     console.log(`AppService: getEmoji called with index: ${index}`);
