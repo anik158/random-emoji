@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { log } from 'console';
 import { Observable } from 'rxjs';
 
@@ -9,6 +9,8 @@ export class AuthGuard implements CanActivate {
   ): boolean | Promise<boolean> | Observable<boolean> {
 
     const request = context.switchToHttp().getRequest();
+
+    throw new UnauthorizedException();  
  
     if(request.header(`x-key-api`) !== 'SECRET') {
       log('AuthGuard: Access denied. Invalid API key.');
